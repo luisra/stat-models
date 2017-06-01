@@ -1,6 +1,6 @@
 # Predictive and Classification Models for Employee Satisfaction and Retention
 
-Predictive and classification models, based on a provided dataset that included employee information from the Human Resources office of a particular company. Both the [training](https://raw.githubusercontent.com/luisra/stat-models/master/HR_train.csv) set and [test](https://raw.githubusercontent.com/luisra/stat-models/master/HR_test.csv) set used for this study can be downloaded using the links provided.
+Predictive and classification models, based on a dataset including employee information from the Human Resources office of a particular company. Both the [training](https://raw.githubusercontent.com/luisra/stat-models/master/HR_train.csv) set and [test](https://raw.githubusercontent.com/luisra/stat-models/master/HR_test.csv) set used for this study can be downloaded using the links provided.
 
 ## Synopsis
 
