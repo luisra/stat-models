@@ -4,7 +4,7 @@ Predictive and classification models, based on a dataset including employee info
 
 ## Synopsis
 
-This project aims to build a predictive model for the satisfaction level of an employee and a classification model for whether or not an employee would leave the company. The study revealed that models built via best subset selection, ridge regression, and lasso are all capable of predicting the satisfaction level of an employee with a MSE of 5%. The study also found the QDA model to be the best overall fit for classifying whether or not an employee would leave the company (12.1% error rate). For whether an employee would stay, the logit model provides better results (7.1% error rate). For whether an employee would leave, the QDA model works best (17.0% error rate).
+This project aims to build a predictive model for the satisfaction level of an employee and a classification model for whether or not an employee would leave the company. The study revealed that models built via best subset selection, ridge regression, and lasso are all capable of predicting the satisfaction level of an employee with a MSE of 5%. The study also found the QDA model to be the best overall fit for classifying whether or not an employee would leave the company (12.1% error rate). For whether an employee would stay, the logit model provided better results (7.1% error rate). For whether an employee would leave, the QDA model worked best (17.0% error rate).
 
 ## Code Example
 
