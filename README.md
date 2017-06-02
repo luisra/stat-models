@@ -12,7 +12,7 @@ The following questions guided our analysis:
 * Is it possible to build a predictive model with a mean squared error (MSE) of 5% or less?
 * Is it possible to build a classification model with a test error rate of 5% or less?
 
-First, we built and tested predictive models for the satisfaction level of an employee. We picked predictors based on best subset selection, forward stepwise, and backward stepwise. Ridge regression and lasso models were considered as well.
+First, we built predictive models for the satisfaction level of an employee. We picked predictors based on best subset selection, forward stepwise, and backward stepwise. Ridge regression and lasso models were considered as well.
 
 Best Subset (Exhaustive): 
 ```
@@ -59,7 +59,7 @@ lasso.mod <- glmnet(x, y, alpha=1, lambda =
                       lasso.cv.out$lambda.min)
 ```
 
-Next, we proceeded to build and test classification models for whether or not an employee would leave the company. We evaluated both the overall error rate and the class-specific error rate. All predictors were found to be significant for this approach.
+Next, we proceeded to build classification models for whether or not an employee would leave the company. We evaluated both the overall error rate and the class-specific error rate. All predictors were found to be significant for this approach.
 
 Logit:
 ```
@@ -85,7 +85,7 @@ qda.fit <- qda(left ~ ., data = hr)
 
 ## Motivation
 
-[WIP]
+We wanted to build the best possible models for predicting the satisfaction level of an employee and classifying whether or not an employee would leave the company. This would allow for greater accuracy in future predictions and classifications.
 
 ## Installation
 
