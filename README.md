@@ -85,7 +85,7 @@ qda.fit <- qda(left ~ ., data = hr)
 
 ## Motivation
 
-We wanted to build the best models for predicting the satisfaction level of an employee and classifying whether or not an employee would leave the company. This would allow for greater accuracy in future predictions and classifications.
+We wanted to build the best possible models for predicting the satisfaction level of an employee and classifying whether or not an employee would leave the company. This would allow for greater accuracy in both future predictions and classifications.
 
 ## Installation
 
