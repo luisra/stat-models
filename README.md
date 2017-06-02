@@ -95,7 +95,7 @@ The stat_models.R script performs all aspects of this implementation.
 
 In order to find the best predictive model for the satisfaction level of an employee and the best classification model for whether or not an employee would leave the company, we calculated the MSE of our predictive models and the test error rate of our classification models.
 
-MSE for predictive models.
+MSE for predictive models --
 
 Best Subset Selection:
 ```
@@ -118,7 +118,7 @@ lasso.preds <- predict(lasso.mod, newx = x_test)
 lasso.MSE <- mean((hr.test$satisfaction_level - lasso.preds)^2)
 ```
 
-Test error rate for classification models.
+Test error rate for classification models --
 
 Logit:
 ```
