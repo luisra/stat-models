@@ -59,7 +59,7 @@ lasso.mod <- glmnet(x, y, alpha=1, lambda =
                       lasso.cv.out$lambda.min)
 ```
 
-Next, we proceeded to build classification models for whether or not an employee would leave the company. We evaluated both the overall error rate and the class-specific error rate. All predictors were found to be significant for this approach.
+Next, we proceeded to build classification models for whether or not an employee would leave the company. We evaluated logit, probit, LDA, and QDA models. All predictors were found to be significant for this approach.
 
 Logit:
 ```
