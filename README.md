@@ -12,9 +12,75 @@ The following questions guided our analysis:
 * Is it possible to build a predictive model with a mean squared error (MSE) of 5% or less?
 * Is it possible to build a classification model with a test error rate of 5% or less?
 
-Code:
+First, we built and tested predictive models for the satisfaction level of an employee. We picked predictors based on best subset selection, forward stepwise, and backward stepwise. Ridge regression and lasso models were considered as well.
+
+Best Subset (Exhaustive): 
 ```
-I am groot!
+regfit.full <- regsubsets(satisfaction_level ~ ., hr)
+
+cp.model <- lm(satisfaction_level ~ last_evaluation + number_project
+               + average_montly_hours + time_spend_company + left + department, hr)
+
+bic.model <- lm(satisfaction_level ~ last_evaluation + number_project
+                + average_montly_hours + time_spend_company + left, hr)
+```
+
+Best Subset (Forward):
+```
+regfit.fwd <- regsubsets(satisfaction_level ~ ., hr, method="forward")
+
+cp.fwd.model <- lm(satisfaction_level ~ last_evaluation + number_project
+                   + average_montly_hours + time_spend_company + left + department, hr)
+
+bic.fwd.model <- lm(satisfaction_level ~ last_evaluation + number_project
+                    + average_montly_hours + time_spend_company + left, hr)
+```
+
+Best Subset Selection (Backward): 
+```
+regfit.bwd <- regsubsets(satisfaction_level ~ ., hr, method="backward")
+
+cp.bwd.model <- lm(satisfaction_level ~ last_evaluation + number_project
+                   + average_montly_hours + time_spend_company + left + department, hr)
+
+bic.bwd.model <- lm(satisfaction_level ~ last_evaluation + number_project
+                    + average_montly_hours + time_spend_company + left, hr)
+```
+
+Ridge Regression:
+```
+ridge.mod <- glmnet(x, y, alpha=0, lambda =
+                      ridge.cv.out$lambda.min)
+```
+
+Lasso:
+```
+lasso.mod <- glmnet(x, y, alpha=1, lambda =
+                      lasso.cv.out$lambda.min)
+```
+
+Next, we proceeded to build and test classification models for whether or not an employee would leave the company. We evaluated both the overall error rate and the class-specific error rate. All predictors were found to be significant for this approach.
+
+Logit:
+```
+logit.model <- glm(left ~., data = hr, 
+                   family = binomial(link=logit))
+```
+
+Probit:
+```
+probit.model <- glm(left ~., data = hr, 
+                    family = binomial(link=probit))
+```
+
+LDA:
+```
+lda.fit <- lda(left ~ ., data = hr) 
+```
+
+QDA:
+```
+qda.fit <- qda(left ~ ., data = hr) 
 ```
 
 ## Motivation
