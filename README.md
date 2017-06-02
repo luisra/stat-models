@@ -36,7 +36,7 @@ bic.fwd.model <- lm(satisfaction_level ~ last_evaluation + number_project
                     + average_montly_hours + time_spend_company + left, hr)
 ```
 
-Best Subset Selection (Backward): 
+Best Subset (Backward): 
 ```
 regfit.bwd <- regsubsets(satisfaction_level ~ ., hr, method="backward")
 
@@ -93,11 +93,69 @@ The stat_models.R script performs all aspects of this implementation.
 
 ## Tests
 
-[WIP]
+In order to find the best predictive model for the satisfaction level of an employee and the best classification model for whether or not an employee would leave the company, we calculated the MSE of our predictive models and the test error rate of our classification models.
 
-Code:
+MSE for predictive models.
+
+Best Subset Selection:
 ```
-I am groot!
+cp.predict <- predict(cp.model, newdata = hr.test) 
+bic.predict <- predict(bic.model, newdata = hr.test)
+
+cp.MSE <- mean((hr.test$satisfaction_level - cp.predict)^2) 
+bic.MSE <- mean((hr.test$satisfaction_level - bic.predict)^2)
+```
+
+Ridge:
+```
+ridge.preds <- predict(ridge.mod, newx = x_test)
+ridge.MSE <- mean((hr.test$satisfaction_level - ridge.preds)^2)
+```
+
+Lasso:
+```
+lasso.preds <- predict(lasso.mod, newx = x_test)
+lasso.MSE <- mean((hr.test$satisfaction_level - lasso.preds)^2)
+```
+
+Test error rate for classification models.
+
+Logit:
+```
+logit.pred <- predict(logit.model, newdata=hr.test,type="response")
+pred<- rep(0,2999) 
+pred[logit.pred>0.5]=1
+
+table(pred, hr.test$left)
+mean(pred != hr.test$left)
+```
+
+Probit:
+```
+probit.pred <- predict(probit.model, newdata=hr.test,type="response")
+pred<- rep(0,2999) 
+pred[probit.pred>0.5]=1
+
+table(pred, hr.test$left)
+mean(pred != hr.test$left)
+```
+
+LDA:
+```
+lda.pred <- predict(lda.fit, hr.test)
+lda.class <- lda.pred$class
+
+table(lda.class, hr.test$left)
+mean(lda.class != hr.test$left)
+```
+
+QDA:
+```
+qda.pred <- predict(qda.fit, hr.test)
+qda.class <- qda.pred$class
+
+table(qda.class, hr.test$left)
+mean(qda.class != hr.test$left)
 ```
 
 ## License
